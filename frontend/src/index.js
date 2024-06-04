@@ -8,6 +8,7 @@ import Home from "./feature/home";
 import Tours from "./feature/tours";
 import Booking from "./feature/Booking";
 import { GlobalNotifier } from "./components/GlobalNotifier";
+import AbhibusApp from "./AbhibusApp";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -18,12 +19,14 @@ const App = () => {
       <Provider store={store}>
         <BrowserRouter>
           <Routes>
-            <Route path="" Component={Home} />
-            <Route
-              path="bus_search/:sourceCity/:sourceCityId/:destCity/:destCityId/:travelDate"
-              element={<Tours />}
-            />
-            <Route path="passengerInfo" element={<Booking />} />
+            <Route path="" element={<AbhibusApp />}>
+              <Route path="" element={<Home />} />
+              <Route
+                path="bus_search/:sourceCity/:sourceCityId/:destCity/:destCityId/:travelDate"
+                element={<Tours />}
+              />
+              <Route path="passengerInfo" element={<Booking />} />
+            </Route>
           </Routes>
         </BrowserRouter>
       </Provider>

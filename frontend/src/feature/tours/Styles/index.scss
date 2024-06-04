@@ -15,9 +15,9 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 850px) {
   .root-tours-container {
     grid-template-columns: auto;
-    gap: 5px;
+    grid-template-rows: auto;
   }
 }

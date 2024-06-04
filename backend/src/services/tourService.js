@@ -4,9 +4,17 @@ const Tour = require("../models/tourSchema");
 const Booking = require("../models/bookingSchema");
 
 const calculateDuration = (startTime, endTime) => {
-  // TODO: convert the seconds into `2d 3h 50m`
-  const duration = endTime - startTime;
-  return duration;
+  const durationInSeconds = Math.abs(endTime - startTime) / 1000;
+
+  const days = Math.floor(durationInSeconds / (24 * 60 * 60));
+  const hours = Math.floor((durationInSeconds % (24 * 60 * 60)) / (60 * 60));
+  const minutes = Math.floor((durationInSeconds % (60 * 60)) / 60);
+
+  const daysString = days > 0 ? `${days}d ` : "";
+  const hoursString = hours > 0 ? `${hours}h ` : "";
+  const minutesString = minutes > 0 ? `${minutes}m` : "";
+
+  return `${daysString}${hoursString}${minutesString}`.trim();
 };
 
 const getBookedSeatsByTourId = async (tourId) => {

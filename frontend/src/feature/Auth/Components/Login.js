@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import { login, setIsLoggedIn } from "../redux/slice";
 import { Button, Form, Input, message } from "antd";
 import "../Styles/Login.scss";
+import { getUserDetails } from "../redux/thunk";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -11,6 +12,7 @@ const Login = () => {
     if (login.fulfilled.match(result)) {
       message.success("Login successful!");
       dispatch(setIsLoggedIn());
+      dispatch(getUserDetails());
     } else {
       message.error(result.payload || "Login failed");
     }

@@ -44,11 +44,13 @@ const authSlice = createSlice({
   initialState: {
     status: "init",
     isLoggedIn: Boolean(Cookies.get("token")),
+    userDetails: JSON.parse(localStorage.getItem("user")) ?? {},
     error: null,
   },
   reducers: {
     setIsLoggedIn: (state) => {
       state.isLoggedIn = Boolean(Cookies.get("token"));
+      state.userDetails = JSON.parse(localStorage.getItem("user")) ?? {};
     },
   },
   extraReducers: (builder) => {

@@ -107,7 +107,7 @@ const TourSearch = () => {
 
   const handleNavigation = () => {
     if (sourceCity && destCity && selectedDate) {
-      const formattedDate = selectedDate.format("DD-MM-YYYY");
+      const formattedDate = selectedDate.format("YYYY-MM-DD");
       const sourceId = sourceCity.cityId;
       const destId = destCity.cityId;
       const url = `/bus_search/${sourceCity.city}/${sourceId}/${destCity.city}/${destId}/${formattedDate}`;

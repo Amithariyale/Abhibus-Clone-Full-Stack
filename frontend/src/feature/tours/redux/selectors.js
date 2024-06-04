@@ -96,7 +96,7 @@ export const filteredToursSelector = createSelector(
       })
       .filter((tour) => {
         const [min, max] = filters[filterKeys.PRICE_RANGE].selectedRange;
-        return tour.minPrice >= min && tour.maxPrice <= max;
+        return tour.maxPrice >= min && tour.minPrice <= max;
       })
       .filter((tour) => {
         const departureTime = filters[filterKeys.DEPARTURE_TIME];

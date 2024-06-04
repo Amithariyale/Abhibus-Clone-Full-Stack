@@ -1,8 +1,10 @@
 const AuthRouter = require("express").Router();
+const authMiddleware = require("../middleware/authMiddleware");
 const {
   createNewUser,
   findUser,
   validatePassword,
+  getUserData,
 } = require("../services/AuthServices");
 const endpoints = require("../utils/endpoints");
 const bcrypt = require("bcrypt");
@@ -81,6 +83,22 @@ AuthRouter.post(endpoints.login, async (req, res) => {
   } catch (error) {
     res.status(400).json({
       message: "Invalid credentials",
+    });
+  }
+});
+
+AuthRouter.get(endpoints.user, authMiddleware, async (req, res) => {
+  try {
+    const userId = req.userId;
+    const userData = await getUserData(userId);
+
+    res.status(200).json({
+      message: "Success",
+      data: userData,
+    });
+  } catch (error) {
+    res.status(400).json({
+      message: error.message,
     });
   }
 });

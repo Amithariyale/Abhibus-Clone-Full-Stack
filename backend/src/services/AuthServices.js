@@ -11,7 +11,7 @@ const createNewUser = async (userInfo) => {
 };
 
 const findUser = async (email) => {
-  const userData = await User.findOne({ email });
+  const userData = await User.findOne({ email }).select("+password");
 
   if (!userData) {
     throw new Error("Unauthorized");
@@ -19,4 +19,12 @@ const findUser = async (email) => {
   return userData;
 };
 
-module.exports = { createNewUser, findUser, validatePassword };
+const getUserData = async (userId) => {
+  const userData = await User.findOne({ _id: userId });
+  if (!userData) {
+    throw new Error("Unauthorized");
+  }
+  return userData;
+};
+
+module.exports = { createNewUser, findUser, validatePassword, getUserData };

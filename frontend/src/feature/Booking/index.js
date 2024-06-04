@@ -6,8 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import Accordion from "./Components/Accordion";
 import FareDetails from "./Components/FareDetails";
 import { useEffect, useState } from "react";
-import { bookTour, setBookingInfo } from "./redux/slice";
-import { Spin, message } from "antd";
+import { setBookingInfo } from "./redux/slice";
+import { Spin } from "antd";
 import { useNavigate } from "react-router-dom";
 import "./Styles/index.scss";
 import { saveBooking } from "./redux/thunk";
@@ -21,20 +21,9 @@ const Booking = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // const bookCurrentTour = async (bookingData) => {
-  //   const result = await dispatch(bookTour(bookingData));
-  //   if (bookTour.fulfilled.match(result)) {
-  //     message.success("Booking Successful!");
-  //     navigate("/");
-  //   } else {
-  //     message.error(result.payload || "Booking Failed");
-  //   }
-  // };
-
   const setAmount = (amount) => setTotalAmount(amount);
 
   const handleSubmition = (formData) => {
-    console.log(formData);
     dispatch(saveBooking(formData));
   };
 

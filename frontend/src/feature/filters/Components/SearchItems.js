@@ -1,8 +1,8 @@
 import { Checkbox, Empty, Input } from "antd";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateStop } from "./redux/slice";
-import "./search-item.scss";
+import { updateStop } from "../redux/slice";
+import "../Styles/search-item.scss";
 
 export const SearchItems = ({ list, placeholder, identifier }) => {
   const [searchValue, setSearchValue] = useState("");

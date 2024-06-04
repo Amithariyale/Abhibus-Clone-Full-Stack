@@ -1,4 +1,4 @@
-@import "variables";
+@import "../../../styles/colors.scss";
 
 .layout_container {
   background-color: #f8f8f8;
@@ -29,6 +29,10 @@
     .point-direction {
       color: #868696;
       font-size: 0.7rem;
+    }
+
+    @media (max-width: 1100px) {
+      flex-wrap: wrap;
     }
   }
 }

@@ -1,6 +1,7 @@
-import { useDispatch } from "react-redux";
-import { ACIcon, NonAC } from "../../components/Icons";
-import { filterKeys, updateStop } from "./redux/slice";
+import { useDispatch, useSelector } from "react-redux";
+import { ACIcon, NonAC } from "../../../components/Icons";
+import { filterKeys, updateStop } from "../redux/slice";
+import BusTypeInput from "./BusTypeInput";
 
 const busTypes = [
   {
@@ -39,24 +40,13 @@ export const BusTypeSelector = () => {
     <div className="section">
       <span className="title">Bus Type</span>
       <div className="boxes">
-        {busTypes.map((busType) => {
-          return (
-            <div className="box" key={busType.identifier}>
-              <input
-                type="checkbox"
-                id={busType.identifier}
-                className="select-box"
-                onChange={(e) => {
-                  updateBusTypeFilter(e.target.checked, busType.identifier);
-                }}
-              />
-              <label htmlFor={busType.identifier}>
-                {busType.icon}
-                <span>{busType.title}</span>
-              </label>
-            </div>
-          );
-        })}
+        {busTypes.map((busType) => (
+          <BusTypeInput
+            key={busType.identifier}
+            busType={busType}
+            updateBusTypeFilter={updateBusTypeFilter}
+          />
+        ))}
       </div>
     </div>
   );

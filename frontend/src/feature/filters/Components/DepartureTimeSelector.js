@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
-import { AfterNoon, Evening, Morining, Night } from "../../components/Icons";
-import { departureTimeKeys, filterKeys, updateStop } from "./redux/slice";
+import { AfterNoon, Evening, Morining, Night } from "../../../components/Icons";
+import { departureTimeKeys, filterKeys, updateStop } from "../redux/slice";
+import DepartureTimeInput from "./DepartureTimeInput";
 
 const departureTimes = [
   {
@@ -41,27 +42,13 @@ export const DepartureTimeSelector = () => {
     <div className="section">
       <span className="title">Departure Time</span>
       <div className="boxes">
-        {departureTimes.map((departureTime) => {
-          return (
-            <div className="box" key={departureTime.identifier}>
-              <input
-                type="checkbox"
-                id={departureTime.identifier}
-                className="select-box"
-                onChange={(e) => {
-                  updateDipartureTime(
-                    e.target.checked,
-                    departureTime.identifier
-                  );
-                }}
-              />
-              <label htmlFor={departureTime.identifier}>
-                {departureTime.icon}
-                <span>{departureTime.title}</span>
-              </label>
-            </div>
-          );
-        })}
+        {departureTimes.map((departureTime) => (
+          <DepartureTimeInput
+            key={departureTime.identifier}
+            updateDipartureTime={updateDipartureTime}
+            departureTime={departureTime}
+          />
+        ))}
       </div>
     </div>
   );

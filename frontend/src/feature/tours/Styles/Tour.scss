@@ -1,4 +1,4 @@
-@import "variables";
+@import "../../../styles/colors.scss";
 
 * {
   padding: 0;
@@ -27,7 +27,7 @@ body {
   background-color: #ffffff;
   transition: box-shadow 0.1s ease;
   border-radius: 10px;
-  cursor: pointer;
+  // cursor: pointer;
   .layout {
     padding: 8px;
   }

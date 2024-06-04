@@ -1,17 +1,15 @@
 import { useSelector } from "react-redux";
-import "./filters.scss";
-import { Accordion } from "./Accordion";
-import { SearchItems } from "./SearchItems";
+import { Accordion } from "./Components/Accordion";
+import { SearchItems } from "./Components/SearchItems";
 import { filterKeys } from "./redux/slice";
-import { PriceRangeSelector } from "./PriceRangeSelector";
-import { BusTypeSelector } from "./BusTypeSelector";
-import { DepartureTimeSelector } from "./DepartureTimeSelector";
-import { Drawer } from "antd";
-import { useState } from "react";
+import { PriceRangeSelector } from "./Components/PriceRangeSelector";
+import { BusTypeSelector } from "./Components/BusTypeSelector";
+import { DepartureTimeSelector } from "./Components/DepartureTimeSelector";
 import {
   boardingAndDroppingPointsSelector,
   uniqueBusPartnersSelector,
 } from "./redux/selectors";
+import "./Styles/filters.scss";
 
 const Filters = () => {
   const { boardingPoints, droppingPoints } = useSelector(
@@ -49,34 +47,4 @@ const Filters = () => {
   );
 };
 
-export const FiltersWrapper = () => {
-  const [openDrawer, setOpenDrawer] = useState(false);
-  const screenWidth = window.innerWidth;
-
-  return (
-    <>
-      {screenWidth <= 600 ? (
-        <>
-          <button
-            className="material-icons filter-icon"
-            onClick={() => setOpenDrawer(true)}
-          >
-            filter_list
-          </button>
-          <Drawer
-            width={screenWidth - 20}
-            title="Apply Filters"
-            open={openDrawer}
-            closable
-            onClose={() => setOpenDrawer(false)}
-            styles={{ body: { padding: 0 } }}
-          >
-            <Filters />
-          </Drawer>
-        </>
-      ) : (
-        <Filters />
-      )}
-    </>
-  );
-};
+export default Filters;

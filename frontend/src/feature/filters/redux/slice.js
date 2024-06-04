@@ -45,10 +45,24 @@ const filtersSlice = createSlice({
     updateSelectedPriceRange: (state, action) => {
       state[filterKeys.PRICE_RANGE].selectedRange = action.payload;
     },
+    clearAllFilters: (state) => {
+      return {
+        ...state,
+        [filterKeys.BOARDING_POINTS]: {},
+        [filterKeys.DROPPING_POINTS]: {},
+        [filterKeys.BUS_PARTNER]: {},
+        [filterKeys.BUS_TYPE]: {},
+        [filterKeys.DEPARTURE_TIME]: {},
+      };
+    },
   },
 });
 
-export const { updateStop, updatePriceRange, updateSelectedPriceRange } =
-  filtersSlice.actions;
+export const {
+  updateStop,
+  updatePriceRange,
+  updateSelectedPriceRange,
+  clearAllFilters,
+} = filtersSlice.actions;
 
 export default filtersSlice;

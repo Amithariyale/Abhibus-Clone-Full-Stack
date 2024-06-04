@@ -1,7 +1,7 @@
 import { Slider } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import { updateSelectedPriceRange } from "./redux/slice";
-import { priceRangeSelector } from "./redux/selectors";
+import { updateSelectedPriceRange } from "../redux/slice";
+import { priceRangeSelector } from "../redux/selectors";
 
 export const PriceRangeSelector = () => {
   const { range, selectedRange } = useSelector(priceRangeSelector);

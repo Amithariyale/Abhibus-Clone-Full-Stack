@@ -1,13 +1,15 @@
-import "./Styles/index.scss";
-import { FiltersWrapper } from "../filters";
+import Filters from "../filters";
 import { useDispatch, useSelector } from "react-redux";
 import { ToursList } from "./Components/ToursList";
 import { Link, useParams } from "react-router-dom";
 import { toursApiStatusSelector } from "./redux/selectors";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchAllTours } from "./redux/thunk";
 import { ApiStatus } from "../../network/constants";
 import { Empty } from "antd";
+import TourSearch from "../home/TourSearch";
+import { clearAllFilters } from "../filters/redux/slice";
+import "./Styles/index.scss";
 
 const Tours = () => {
   const { sourceCityId, destCityId, travelDate } = useParams();
@@ -16,22 +18,42 @@ const Tours = () => {
 
   useEffect(() => {
     dispatch(fetchAllTours(sourceCityId, destCityId, travelDate));
+
+    return () => dispatch(clearAllFilters());
   }, []);
 
   if (apiStatus === ApiStatus.pending || apiStatus === ApiStatus.init) {
     return <h1>Loading..</h1>;
   }
 
-  return <ToursWrapper />;
+  return (
+    <div>
+      {/* <TourSearch /> */}
+      <ToursWrapper />
+    </div>
+  );
 };
 
 const ToursWrapper = () => {
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const tours = useSelector((state) => state.tours?.tours?.data?.tours);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   if (tours?.length > 0) {
     return (
       <div className="root-tours-container">
-        <FiltersWrapper />
+        {screenWidth >= 850 && <Filters />}
         <ToursList />
       </div>
     );

@@ -4,7 +4,7 @@ import SignUp from "./Components/Signup";
 import { useState } from "react";
 import "./Styles/Auth.scss";
 
-const Auth = () => {
+const Auth = ({ closable, handleCloseBtn }) => {
   const [activeKey, setActiveKey] = useState("1");
 
   const handleSignupSuccess = () => {
@@ -25,6 +25,11 @@ const Auth = () => {
   return (
     <div className="Auth-container">
       <div className="form-container">
+        {closable && (
+          <button className="close-btn material-icons" onClick={handleCloseBtn}>
+            close
+          </button>
+        )}
         <Tabs
           defaultActiveKey="1"
           activeKey={activeKey}
