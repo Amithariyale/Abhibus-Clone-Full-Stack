@@ -1,5 +1,5 @@
 // const baseUrl = "https://bookmybus-jhyi.onrender.com";
-const baseUrl = "http://localhost:8080";
+const baseUrl = "https://abhibus-clone-full-stack.onrender.com";
 
 const Endpoints = {
   signup: `${baseUrl}/auth/signup`,
