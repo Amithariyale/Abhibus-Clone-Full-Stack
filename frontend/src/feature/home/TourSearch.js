@@ -6,10 +6,10 @@ import {
   updateSelectedDate,
 } from "./redux/slice";
 import { DatePicker } from "antd";
-import "../../styles/toursearch.scss";
 import dayjs from "dayjs";
 import CitiesList from "./CitiesList";
 import { useNavigate } from "react-router-dom";
+import "../../styles/toursearch.scss";
 
 const searchCities = (state, searchValue, excludedCity) => {
   return state.search.cities.filter(
@@ -130,11 +130,7 @@ const TourSearch = () => {
   }, [dispatch]);
 
   return (
-    <section
-      className="tour-header"
-      style={{ backgroundImage: `url(images/searchbus.webp)` }}
-      onClick={(e) => e.stopPropagation()}
-    >
+    <section className="tour-header" onClick={(e) => e.stopPropagation()}>
       <section className="main-section">
         <div className="tour-heading">
           <h1>Book Bus Tickets</h1>

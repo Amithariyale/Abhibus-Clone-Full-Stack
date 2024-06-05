@@ -9,6 +9,7 @@ const Endpoints = {
   seatLayout: `${baseUrl}/bus/layout`,
   book: `${baseUrl}/ticket/book`,
   cities: `${baseUrl}/cities`,
+  trips: `${baseUrl}/ticket/trips`,
 };
 
 export default Endpoints;

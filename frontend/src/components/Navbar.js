@@ -1,4 +1,4 @@
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Bus, Logo, UserIcon } from "./icons2";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -11,6 +11,7 @@ import Filters from "../feature/filters";
 
 const UserDropdown = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const userDetails = useSelector((state) => state.auth.userDetails);
 
@@ -20,10 +21,17 @@ const UserDropdown = () => {
     dispatch(setIsLoggedIn());
   };
 
+  const showBookings = () => {
+    navigate("/trips");
+  };
   const items = [
     {
       label: <p>{userDetails.name}</p>,
       key: 0,
+    },
+    {
+      label: <p onClick={showBookings}>Bookings</p>,
+      key: 1,
     },
     {
       label: (
@@ -31,7 +39,7 @@ const UserDropdown = () => {
           Logout
         </button>
       ),
-      key: 1,
+      key: 2,
     },
   ];
   return (
@@ -41,7 +49,9 @@ const UserDropdown = () => {
       }}
       trigger={["click"]}
     >
-      <Space>User</Space>
+      <Space>
+        <UserIcon color={"#444444"} />
+      </Space>
     </Dropdown>
   );
 };
@@ -109,8 +119,14 @@ const Navbar = () => {
             </>
           )}
           <button className="auth-btn" onClick={handleAuthClick}>
-            <UserIcon />
-            <p>{isLoggedIn ? <UserDropdown /> : "Login/SignUp"}</p>
+            {isLoggedIn ? (
+              <UserDropdown />
+            ) : (
+              <>
+                <UserIcon />
+                <p>Login/SignUp</p>
+              </>
+            )}
           </button>
         </div>
       </div>

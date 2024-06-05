@@ -3,6 +3,7 @@
   padding: 8px 20px;
   display: flex;
   justify-content: center;
+
   .navbar {
     max-width: 1250px;
     flex-grow: 1;
@@ -48,4 +49,5 @@
   border: none !important;
   color: $brand;
   background-color: inherit;
+  cursor: pointer;
 }

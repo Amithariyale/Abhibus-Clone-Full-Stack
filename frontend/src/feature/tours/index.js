@@ -10,6 +10,7 @@ import { Empty } from "antd";
 import TourSearch from "../home/TourSearch";
 import { clearAllFilters } from "../filters/redux/slice";
 import "./Styles/index.scss";
+import Loader from "../../components/Loader";
 
 const Tours = () => {
   const { sourceCityId, destCityId, travelDate } = useParams();
@@ -23,7 +24,7 @@ const Tours = () => {
   }, []);
 
   if (apiStatus === ApiStatus.pending || apiStatus === ApiStatus.init) {
-    return <h1>Loading..</h1>;
+    return <Loader />;
   }
 
   return (

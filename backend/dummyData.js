@@ -1876,7 +1876,7 @@ function getRandomInt(min, max) {
 
 const setRandomTimeForDest = (date) => {
   const newDate = new Date(date);
-  const randomHours = Math.floor(Math.random() * 12) + 12; // 0 to 12
+  const randomHours = Math.floor(Math.random() * 12) + 18; // 0 to 12
   const randomMinutes = Math.floor(Math.random() * 60); // 0 to 59
   const randomSeconds = Math.floor(Math.random() * 60); // 0 to 59
   const randomMilliseconds = Math.floor(Math.random() * 1000); // 0 to 999
@@ -1891,7 +1891,7 @@ const setRandomTimeForDest = (date) => {
 };
 const setRandomTimeForSource = (date) => {
   const newDate = new Date(date);
-  const randomHours = Math.floor(Math.random() * 13); // 0 to 12
+  const randomHours = Math.floor(Math.random() * 18); // 0 to 12
   const randomMinutes = Math.floor(Math.random() * 60); // 0 to 59
   const randomSeconds = Math.floor(Math.random() * 60); // 0 to 59
   const randomMilliseconds = Math.floor(Math.random() * 1000); // 0 to 999

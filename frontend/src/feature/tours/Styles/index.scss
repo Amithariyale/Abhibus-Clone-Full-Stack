@@ -19,5 +19,10 @@
   .root-tours-container {
     grid-template-columns: auto;
     grid-template-rows: auto;
+    padding: 0;
+    padding-bottom: 20px;
+    .tours_container{
+      padding: 5px;
+    }
   }
 }

@@ -33,4 +33,8 @@ const saveBookings = async (tourId, userId, seats) => {
   return await booking.save();
 };
 
-module.exports = { saveBookings };
+const getTrips = async (userId) => {
+  const trips = await Booking.find({ userId });
+  return trips;
+};
+module.exports = { saveBookings,getTrips };

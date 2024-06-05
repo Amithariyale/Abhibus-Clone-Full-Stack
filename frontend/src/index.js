@@ -9,6 +9,7 @@ import Tours from "./feature/tours";
 import Booking from "./feature/Booking";
 import { GlobalNotifier } from "./components/GlobalNotifier";
 import AbhibusApp from "./AbhibusApp";
+import Trips from "./feature/Trips";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -26,6 +27,7 @@ const App = () => {
                 element={<Tours />}
               />
               <Route path="passengerInfo" element={<Booking />} />
+              <Route path="trips" element={<Trips />} />
             </Route>
           </Routes>
         </BrowserRouter>

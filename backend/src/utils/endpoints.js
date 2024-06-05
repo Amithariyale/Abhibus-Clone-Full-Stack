@@ -4,4 +4,5 @@ module.exports = {
   user: "/user",
   getTours: "/tours",
   book: "/book",
+  trips: "/trips",
 };
