@@ -3,6 +3,7 @@ import TourSearch from "./TourSearch";
 import { fetchCities } from "./redux/thunk";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "antd";
+import Loader from "../../components/Loader";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ const Home = () => {
   }, []);
 
   if (apiStatus === "init" || apiStatus === "pending") {
-    return <h1>Loading ..</h1>;
+    return <Loader />;
   }
 
   if (apiStatus === "error")
